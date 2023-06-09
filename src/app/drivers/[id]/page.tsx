@@ -116,7 +116,7 @@ export default function Home() {
   return (
     <>
       <div className="mx-auto my-4 text-4xl ld:text-6xl font-extrabold">
-      <Link href="/teams" className="mx-4 inline-block"><ArrowLeftCircleIcon className="w-8 h-8"/></Link>
+      <Link href="/drivers" className="mx-4 inline-block"><ArrowLeftCircleIcon className="w-8 h-8"/></Link>
         {name}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-8">

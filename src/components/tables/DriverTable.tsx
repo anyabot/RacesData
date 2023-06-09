@@ -1,5 +1,5 @@
 import { Driver } from '@/interfaces/interfaces';
-
+import Link from 'next/link';
 
 import { Card, Typography } from "@material-tailwind/react";
 
@@ -26,16 +26,20 @@ export default function DriverTable({drivers}: {drivers: Driver[]}) {
         </thead>
         <tbody>
           {drivers.map(({ position, driver, nationality, car, point }) => (
+            
             <tr key={position + driver} className="even:bg-blue-gray-50/50">
+              
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
                   {position}
                 </Typography>
               </td>
               <td className="p-4">
+              <Link href={`drivers/${driver}`}>
                 <Typography variant="small" color="red" className="font-normal">
                   {driver}
                 </Typography>
+                </Link>
               </td>
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
@@ -52,7 +56,9 @@ export default function DriverTable({drivers}: {drivers: Driver[]}) {
                   {point}
                 </Typography>
               </td>
+              
             </tr>
+            
           ))}
         </tbody>
       </table>

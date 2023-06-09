@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full  my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {getFiltered().map(e => <CardLink text={e} img="https://cdn-8.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg" href={`/teams/${e}`}/>)}
+        {getFiltered().map(e => <CardLink key={e} text={e} img="https://cdn-8.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg" href={`/teams/${e}`}/>)}
       </div>
     </>
   );

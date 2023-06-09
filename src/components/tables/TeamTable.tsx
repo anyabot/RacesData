@@ -1,7 +1,7 @@
 "use client"
 
 import { Team } from '@/interfaces/interfaces';
-
+import Link from 'next/link';
 
 import { Card, Typography } from "@material-tailwind/react";
 
@@ -35,9 +35,11 @@ export default function TeamTable({teams}: {teams: Team[]}) {
                 </Typography>
               </td>
               <td className="p-4">
+              <Link href={`teams/${team}`}>
                 <Typography variant="small" color="red" className="font-normal">
                   {team}
                 </Typography>
+                </Link>
               </td>
               <td className="p-4">
                 <Typography as="a" href="#" variant="small" color="blue" className="font-medium">
