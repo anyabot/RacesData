@@ -1,34 +1,41 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
-
-First, run the development server:
+# Getting Started
+Install Dependencies the development server:
 
 ```bash
-npm run dev
-# or
+yarn install
+```
+
+Run the development server:
+
+```bash
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Pages
+Pages are responsive and can handle mobile view.
+## Landing Page
+Consists of Image-Link leading to the other search pages
+## Search by Years
+Search all data from the other categories (Races, Drivers, Teams) by Years, displaying as Tables.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Each entry in the tables for Teams and Drivers contains a link leading to the respective Team / Driver Page.
+## Search by Races
+Contains a table of all the races from all the years. 
 
-## Learn More
+There is a search bar that allow users to search for specific Grand Prix / Winner / Car.
+## Search by Players / Teams
+These 2 pages are similar, containing a search bar for name of the desired Driver / Team, as well as a Year filter (OR operator) to find which Driver / Team played in which year.
 
-To learn more about Next.js, take a look at the following resources:
+The results are Cards that links to the specific Driver / Team pages.
+## Driver / Team Pages
+Contain a table displaying the Years that Driver / Team played in, as well as their average ranking and points.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Also contains a Graph of Ranking / Point per Years made with ***react-chartjs-2***
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Live Demo
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A Live Demo can be used at [https://races-data.vercel.app/](https://races-data.vercel.app/) (Deployed with Vercel).
