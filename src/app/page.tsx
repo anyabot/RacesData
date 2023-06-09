@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
 import Head from "next/head";
-
+import { useEffect } from "react";
 export default function Home() {
+  useEffect(() => {document.title = "F1 Search Main Page"}, [])
   return (
     <>
-    <Head>
-    <title>F1 Search Main Page</title>
-    </Head>
     <div className="font-semibold my-6 text-3xl md:text-6xl">Search for Formula 1 Data You Want</div>
     <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-4 color text-white">
       <Link href="/years" className="md:col-span-2 md:row-span-2 relative cursor-pointer">

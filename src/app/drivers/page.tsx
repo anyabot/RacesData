@@ -26,7 +26,8 @@ export default function Home() {
   };
 
   const handleSearch = debounce((e: string) => setSearch(e), 300);
-  document.title = "F1 Search By Drivers"
+  useEffect(() => {document.title = "F1 Search By Drivers"}, [])
+  
   return (
     <>
       <div className="mx-auto my-4 text-4xl ld:text-6xl font-extrabold">

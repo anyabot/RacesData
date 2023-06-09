@@ -3,13 +3,12 @@
 import { Race } from "@/interfaces/interfaces";
 import { debounce } from "lodash";
 
-import Head from "next/head";
 import { Select, Option, Input } from "@material-tailwind/react";
 import RaceTable from "@/components/tables/RaceTable";
 
 import { selectRaces } from "@/store/raceSlice";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
 
 export default function Home() {
@@ -44,7 +43,7 @@ export default function Home() {
   };
 
   const handleSearch = debounce((e: string) => setSearch(e), 300);
-  document.title = "F1 Search By Races"
+  useEffect(() => {document.title = "F1 Search By Races"}, [])
   return (
     <>
       <div className="mx-auto my-4 text-4xl ld:text-6xl font-extrabold">

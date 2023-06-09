@@ -1,7 +1,5 @@
 "use client"
 
-import Image from 'next/image'
-import Head from 'next/head';
 import { Select, Option, Card, Typography } from "@material-tailwind/react";
 import RaceTable from '@/components/tables/RaceTable';
 import DriverTable from '@/components/tables/DriverTable';
@@ -11,7 +9,7 @@ import { selectRaces } from '@/store/raceSlice';
 import { selectDrivers } from '@/store/driverSlice';
 import { selectTeams } from '@/store/teamSlice';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector } from '@/hooks';
 
 export default function Home() {
@@ -32,7 +30,7 @@ export default function Home() {
         break
     }
   }
-  document.title = "F1 Search By Years"
+  useEffect(() => {document.title = "F1 Search By Years"}, [])
   return (
     <>
     <div className='mx-auto my-4 text-4xl ld:text-6xl font-extrabold'>Seach Formula 1 Data</div>
