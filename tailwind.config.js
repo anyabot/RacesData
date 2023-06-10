@@ -14,6 +14,10 @@ module.exports = withMT({
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      boxShadow: {
+        'link': 'inset 500px 0 0 0 rgba(230, 230, 250, 0.3)',
+        'linkBefore': 'inset 0 0 0 0 rgba(230, 230, 250, 0.3)',
+      }
     },
   },
   plugins: [],

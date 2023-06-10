@@ -102,7 +102,8 @@ export default function Home() {
       sum += Number(drivers[name][year].position)
       count += 1
     }
-    return sum / count
+    if (count == 0) return "No Data"
+    return Math.round((sum / count) * 100) / 100
   }
   const averagePoint = () => {
     let sum = 0
@@ -111,7 +112,8 @@ export default function Home() {
       sum += Number(drivers[name][year].point)
       count += 1
     }
-    return sum / count
+    if (count == 0) return "No Data"
+    return Math.round((sum / count) * 100) / 100
   }
   
   return (
@@ -130,7 +132,7 @@ export default function Home() {
           <table className="table-auto w-full text-2xl">
             <tbody>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
-                <td className="font-semibold">Year Participating</td>
+                <td className="font-semibold">{"Year Participating: " + Object.keys(drivers[name]).length} </td>
                 
               </tr>
               <tr className="m-4">
