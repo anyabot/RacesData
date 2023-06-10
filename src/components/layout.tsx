@@ -6,6 +6,6 @@ import NavBar from "./navbar";
 export default function Layout({children}: {children: ReactNode}) {
   return <body>
     <NavBar/>
-    <div className="container mx-auto mt-4">{children}</div>
+    <div className="container h-full mx-auto mt-4">{children}</div>
     </body>
 }

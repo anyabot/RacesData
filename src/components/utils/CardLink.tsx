@@ -16,13 +16,11 @@ interface Props {
 
 export default function CardLink({text, img, href}: Props) {
   return (
-    <Link href={href}>
+    <Link href={href} className="inline-block">
     <Card className="mt-6">
-      <CardHeader color="blue-gray" className="relative max-h-56">
-        <img src={img} alt="img-blur-shadow" />
-      </CardHeader>
       <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
+      <img src={img} alt="img-blur-shadow"/>
+        <Typography variant="h5" color="blue-gray" className="mt-4 min-h-96">
           {text}
         </Typography>
         

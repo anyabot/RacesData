@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { Team } from "@/interfaces/interfaces";
 import teams from "../../public/teams.json"
 import teams2 from "../../public/teams_2.json"
+import team_img from "../../public/teams_img.json"
 
 export interface Teams {
   teams: {
@@ -11,11 +12,13 @@ export interface Teams {
   teams2: {
     [key: string]: {[key: string]: Team}
   };
+  team_img: {[key: string] : string}
 }
 
 const initialState: Teams = {
   teams: teams,
-  teams2: teams2
+  teams2: teams2,
+  team_img: team_img
 };
 
 export const TeamSlice = createSlice({
@@ -34,5 +37,6 @@ export const {
 } = TeamSlice.actions;
 export const selectTeams = (state: RootState) => state.teams.teams;
 export const selectTeams2 = (state: RootState) => state.teams.teams2;
+export const selectTeamImg = (state: RootState) => state.teams.team_img;
 
 export default TeamSlice.reducer;

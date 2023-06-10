@@ -17,7 +17,7 @@ import Error from "next/error";
 import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid'
 import Link from "next/link";
 
-import { selectDrivers2 } from "@/store/driverSlice";
+import { selectDrivers2, selectDriverImg } from "@/store/driverSlice";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
@@ -64,6 +64,7 @@ const options = {
 
 export default function Home() {
   const drivers = useAppSelector(selectDrivers2);
+  const driverImg = useAppSelector(selectDriverImg);
   const [name, setName] = useState("");
 
   const params = useParams();
@@ -122,7 +123,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-8">
 
         <div className="inline-block md:row-span-2">
-        <img src="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1920.medium.jpg/1677069594164.jpg" alt={name} className="max-h-full mx-auto"/>
+        <img src={driverImg[name]} alt={name} className="max-h-full mx-auto"/>
         </div>
         <div className="inline-block md:col-span-2">
           <Card className="p-4">

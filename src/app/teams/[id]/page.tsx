@@ -17,7 +17,7 @@ import Error from "next/error";
 import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid'
 import Link from "next/link";
 
-import { selectTeams2 } from "@/store/teamSlice";
+import { selectTeams2, selectTeamImg } from "@/store/teamSlice";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
@@ -64,6 +64,7 @@ const options = {
 
 export default function Home() {
   const teams = useAppSelector(selectTeams2);
+  const teamImg = useAppSelector(selectTeamImg);
   const [name, setName] = useState("");
 
   const params = useParams();
@@ -122,7 +123,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-8">
 
         <div className="inline-block md:row-span-2">
-        <img src="https://cdn-8.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg" alt={name} className="max-h-full mx-auto"/>
+        <img src={teamImg[name]} alt={name} className="max-h-full mx-auto"/>
         </div>
         <div className="inline-block md:col-span-2">
           <Card className="p-4">

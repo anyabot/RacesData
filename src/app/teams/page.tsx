@@ -3,15 +3,17 @@
 import { debounce } from "lodash";
 
 import { Input } from "@material-tailwind/react";
-import { selectTeams2 } from "@/store/teamSlice";
+import { selectTeams2, selectTeamImg } from "@/store/teamSlice";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
 import CardLink from "@/components/utils/CardLink";
 import PopoverYear from "@/components/utils/PopoverYear";
+import Image from 'next/image';
 
 export default function Home() {
   const teams = useAppSelector(selectTeams2);
+  const teamImg = useAppSelector(selectTeamImg);
   const allTeams: string[] = Object.keys(teams);
   const [searchTerm, setSearch] = useState("");
   const [filterYears, setFilterYears] = useState<string[]>([]);
@@ -42,8 +44,8 @@ export default function Home() {
           <PopoverYear callback={setFilterYears}/>
         </div>
       </div>
-      <div className="w-full  my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {getFiltered().map(e => <CardLink key={e} text={e} img="https://cdn-8.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg" href={`/teams/${e}`}/>)}
+      <div className="w-full mt-4 mb-8 columns-2 md:columns-3 lg:columns-4 gap-4">
+        {getFiltered().map(e => <CardLink key={e} text={e} img={teamImg[e]} href={`/teams/${e}`}/>)}
       </div>
     </>
   );

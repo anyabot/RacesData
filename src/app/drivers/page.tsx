@@ -5,7 +5,7 @@ import { debounce } from "lodash";
 import { Select, Option, Input } from "@material-tailwind/react";
 
 import { selectRaces } from "@/store/raceSlice";
-import { selectDrivers2 } from "@/store/driverSlice";
+import { selectDrivers2, selectDriverImg } from "@/store/driverSlice";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
@@ -15,6 +15,7 @@ import PopoverYear from "@/components/utils/PopoverYear";
 export default function Home() {
   const drivers = useAppSelector(selectDrivers2);
   const allDrivers: string[] = Object.keys(drivers);
+  const driverImg = useAppSelector(selectDriverImg);
   const [searchTerm, setSearch] = useState("");
   const [filterYears, setFilterYears] = useState<string[]>([]);
   
@@ -45,8 +46,8 @@ export default function Home() {
           <PopoverYear callback={setFilterYears}/>
         </div>
       </div>
-      <div className="w-full  my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {getFiltered().map(e => <CardLink key={e} text={e} img="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1920.medium.jpg/1677069594164.jpg" href={`/drivers/${e}`}/>)}
+      <div className="w-full mt-4 mb-8 columns-2 md:columns-3 lg:columns-4 gap-4">
+        {getFiltered().map(e => <CardLink key={e} text={e} img={driverImg[e]} href={`/drivers/${e}`}/>)}
       </div>
     </>
   );
