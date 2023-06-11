@@ -9,7 +9,7 @@ export default function Example() {
   return (
 <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
-  <Link href="/"><img src="https://www.thedesignfrontier.com/wp-content/uploads/2019/05/f1-logo-big.png" alt="logo" className='max-h-12 h-12'/></Link>
+  <Link href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/2560px-F1.svg.png" alt="logo" className='max-h-10 h-10'/></Link>
     <Link href="/" className="font-semibold text-xl tracking-tight">Home</Link>
   </div>
   <div className="block lg:hidden">
