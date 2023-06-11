@@ -1,7 +1,9 @@
 import { Driver } from '@/interfaces/interfaces';
+
 import Link from 'next/link';
 
 import { Card, Typography } from "@material-tailwind/react";
+import CountryFlag from '../utils/CountryFlag';
 
 export default function DriverTable({drivers}: {drivers: Driver[]}) {
 
@@ -43,7 +45,7 @@ export default function DriverTable({drivers}: {drivers: Driver[]}) {
               </td>
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
-                  {nationality}
+                <CountryFlag country={nationality}/>
                 </Typography>
               </td>
               <td className="p-4">
