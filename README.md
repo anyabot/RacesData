@@ -23,6 +23,8 @@ Consists of Image-Link leading to the other search pages
 Search all data from the other categories (Races, Drivers, Teams) by Years, displaying as Tables.
 
 Each entry in the tables for Teams and Drivers contains a link leading to the respective Team / Driver Page.
+
+Searching for Teams and Drivers will also brings up Bar Chart / Pie Chart of the results.
 ## Search by Races
 Contains a table of all the races from all the years. 
 
