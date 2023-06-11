@@ -4,7 +4,7 @@ import { Select, Option, Card, Typography } from "@material-tailwind/react";
 import RaceTable from "@/components/tables/RaceTable";
 import DriverTable from "@/components/tables/DriverTable";
 import TeamTable from "@/components/tables/TeamTable";
-import BarChart from "@/components/tables/BarChart";
+import BarChart from "@/components/charts/BarChart";
 
 import { selectRaces } from "@/store/raceSlice";
 import { selectDrivers } from "@/store/driverSlice";
@@ -12,6 +12,7 @@ import { selectTeams } from "@/store/teamSlice";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
+import PieChart from "@/components/charts/PieChart";
 
 export default function Home() {
   const races = useAppSelector(selectRaces);
@@ -27,19 +28,22 @@ export default function Home() {
         return <RaceTable races={races[currYear]} />;
       case "driver":
         return (
-          <div className="grid md:grid-cols-2 gap-4">
-            <BarChart mode="driver" year={currYear} />
+          <div className="grid md:grid-cols-2 gap-4 ">
+            <div className="max-w-full">
+              <BarChart mode="driver" year={currYear} />
+              <PieChart mode="driver" year={currYear} />
+            </div>
             <DriverTable drivers={drivers[currYear]} />
-
           </div>
         );
       case "team":
         return (
           <div className="grid md:grid-cols-2 gap-4">
-            <BarChart mode="team" year={currYear} />
-            <TeamTable teams={teams[currYear]} />
-
+            <div>
+              <BarChart mode="team" year={currYear} />
             </div>
+            <TeamTable teams={teams[currYear]} />
+          </div>
         );
     }
   }

@@ -11,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Colors
 } from 'chart.js';
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Bar } from 'react-chartjs-2';
@@ -26,7 +27,8 @@ ChartJS.register(
   ChartDataLabels,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Colors
 );
 
 const options = {
@@ -38,6 +40,10 @@ const options = {
     title: {
       display: true,
       text: 'Point Acquired',
+    },
+    datalabels: {
+      anchor: 'end',
+      align: 'top',
     },
     colors: {
       forceOverride: true
@@ -71,11 +77,10 @@ export default function BarChart({mode, year}: Props) {
       {
         label: 'Point',
         data: dataSet.map((e) => Number(e.point)),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ]
   }
 
   
-  return <div><Bar options={options} data={data} /></div>
+  return <Bar options={options} data={data} />
 }
