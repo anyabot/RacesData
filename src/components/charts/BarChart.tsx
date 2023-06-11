@@ -42,8 +42,8 @@ const options = {
       text: 'Point Acquired',
     },
     datalabels: {
-      anchor: 'end',
-      align: 'top',
+      anchor: 'end' as "end",
+      align: 'top' as "top",
     },
     colors: {
       forceOverride: true
