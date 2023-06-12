@@ -18,7 +18,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 # Pages
 Pages are responsive and can handle mobile view.
 ## Landing Page
-Consists of Image-Link leading to the other search pages
+Consists of Image-Link leading to the other search pages, as well as some graphs for the current Season (2023) and Result History of Teams and Drivers.
+
+Sections of the landing page has animations for entering and leaving the viewport.
 ## Search by Years
 Search all data from the other categories (Races, Drivers, Teams) by Years, displaying as Tables.
 
