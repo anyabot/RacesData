@@ -11,6 +11,7 @@ import { selectTeams2 } from "@/store/teamSlice";
 import BarChart from "@/components/charts/BarChart";
 import LineChart from "@/components/charts/LineChart";
 import PieChart from "@/components/charts/PieChart";
+import AnimateOnScroll from "@/components/utils/AnimateOnScroll";
 export default function Home() {
   useEffect(() => {document.title = "F1 Search Main Page"}, [])
   const drivers = useAppSelector(selectDrivers2);
@@ -21,6 +22,7 @@ export default function Home() {
   const [team, setTeam] = useState("Mercedes");
   return (
     <>
+    <AnimateOnScroll reappear={true} threshold={[0.3, 0.5]}>
     <div className="font-semibold my-6 text-3xl md:text-6xl">Search for Formula 1 Data You Want</div>
     <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-4 text-white">
       <Link href="/years" className="md:col-span-2 md:row-span-2 relative cursor-pointer">
@@ -64,6 +66,8 @@ export default function Home() {
         </div>
       </Link>
     </div>
+    </AnimateOnScroll>
+    <AnimateOnScroll reappear={true} threshold={[0.3, 0.5]}>
     <div className="font-semibold my-3 text-2xl md:text-4xl">Current Season</div>
     <div className="grid md:grid-cols-2 w-full gap-4">
       <div className="overflow-auto">
@@ -83,6 +87,8 @@ export default function Home() {
       <PieChart mode="driver" year="2023"/>
       </div>
     </div>
+    </AnimateOnScroll>
+    <AnimateOnScroll reappear={true} threshold={[0.3, 0.5]}>
     <div className="font-semibold my-3 text-2xl md:text-4xl">Result History</div>
     <div className="grid md:grid-cols-2 w-full gap-4">
       <div className="overflow-auto">
@@ -113,6 +119,7 @@ export default function Home() {
       </div>
       
     </div>
+    </AnimateOnScroll>
     </>
   );
 }
