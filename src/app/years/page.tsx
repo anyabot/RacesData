@@ -25,11 +25,18 @@ export default function Home() {
   function switchMode() {
     switch (mode) {
       case "race":
-        return <RaceTable races={races[currYear]} />;
+        return (
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="overflow-auto">
+              <PieChart mode="winner" year={currYear} />
+            </div>
+            <RaceTable races={races[currYear]} />
+          </div>
+        );
       case "driver":
         return (
           <div className="grid md:grid-cols-2 gap-4 ">
-            <div className="max-w-full">
+            <div className="max-w-full overflow-auto">
               <BarChart mode="driver" year={currYear} />
               <PieChart mode="driver" year={currYear} />
             </div>
@@ -39,7 +46,7 @@ export default function Home() {
       case "team":
         return (
           <div className="grid md:grid-cols-2 gap-4">
-            <div>
+            <div className="overflow-auto">
               <BarChart mode="team" year={currYear} />
             </div>
             <TeamTable teams={teams[currYear]} />

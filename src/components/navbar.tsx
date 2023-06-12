@@ -7,10 +7,10 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-<nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 sticky top-0 z-10">
+<nav className="flex items-center justify-between flex-wrap bg-gray-400 p-6 sticky top-0 z-10">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
   <Link href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/2560px-F1.svg.png" alt="logo" className='max-h-10 h-10'/></Link>
-    <Link href="/" className="font-semibold text-xl tracking-tight">Home</Link>
+    <Link href="/" className="font-semibold text-2xl tracking-tight block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-600 shadow-linkBefore hover:text-white hover:shadow-link transition-all">Home</Link>
   </div>
   <div className="block lg:hidden">
     <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -19,16 +19,16 @@ export default function Example() {
   </div>
   <div className={"w-full block flex-grow lg:flex lg:items-center lg:w-auto" + (mobileMenuOpen ? "" : " hidden lg:visible")}>
     <div className="text-lg font-semibold lg:flex-grow">
-    <Link href="/years" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-300 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
+    <Link href="/years" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-500 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
         Years
       </Link>
-      <Link href="/races" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-300 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
+      <Link href="/races" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-500 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
         Races
       </Link>
-      <Link href="/drivers" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-300 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
+      <Link href="/drivers" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-500 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
         Drivers
       </Link>
-      <Link href="/teams" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-300 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
+      <Link href="/teams" className="block mt-4 mr-4 lg:inline-block lg:mt-0 rounded px-2 text-teal-500 shadow-linkBefore hover:text-white hover:shadow-link transition-all">
         Teams
       </Link>
     </div>

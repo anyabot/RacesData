@@ -1,20 +1,9 @@
 "use client";
 
-import React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import React from "react";
 import { Card } from "@material-tailwind/react";
 import Error from "next/error";
-import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 import { selectTeams2, selectTeamImg } from "@/store/teamSlice";
@@ -22,45 +11,7 @@ import { selectTeams2, selectTeamImg } from "@/store/teamSlice";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/hooks";
 import { useParams } from "next/navigation";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Ranking and Points each year',
-    },
-  },
-  scales: {
-    y1: {
-      type: 'linear' as const,
-      display: true,
-      position: 'left' as const,
-      reverse: true
-    },
-    y2: {
-      type: 'linear' as const,
-      display: true,
-      position: 'right' as const,
-      grid: {
-        drawOnChartArea: false,
-      },
-    },
-  },
-};
+import LineChart from "@/components/charts/LineChart";
 
 export default function Home() {
   const teams = useAppSelector(selectTeams2);
@@ -71,93 +22,73 @@ export default function Home() {
   useEffect(() => {
     let temp = decodeURI(params.id as string);
     setName(temp);
-    document.title = "Driver | " + temp
+    document.title = "Driver | " + temp;
   }, [params.id]);
   if (!name) return null;
-  if (!(name in teams)) return <Error statusCode={404} />
-  const labels = Object.keys(teams[name])
-  const data = {
-    labels, 
-      datasets: [
-      {
-        label: 'Ranking',
-        data: labels.map((e) => Number(teams[name][e].position)),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y1',
-      },
-      {
-        label: 'Point',
-        data: labels.map((e) => Number(teams[name][e].point)),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y2',
-      },
-    ]
-  }
+  if (!(name in teams)) return <Error statusCode={404} />;
   const averageRanking = () => {
-    let sum = 0
-    let count = 0
+    let sum = 0;
+    let count = 0;
     for (let year in teams[name]) {
-      sum += Number(teams[name][year].position)
-      count += 1
+      sum += Number(teams[name][year].position);
+      count += 1;
     }
-    if (count == 0) return "No Data"
-    return Math.round((sum / count) * 100) / 100
-  }
+    if (count == 0) return "No Data";
+    return Math.round((sum / count) * 100) / 100;
+  };
   const averagePoint = () => {
-    let sum = 0
-    let count = 0
+    let sum = 0;
+    let count = 0;
     for (let year in teams[name]) {
-      sum += Number(teams[name][year].point)
-      count += 1
+      sum += Number(teams[name][year].point);
+      count += 1;
     }
-    if (count == 0) return "No Data"
-    return Math.round((sum / count) * 100) / 100
-  }
-  
+    if (count == 0) return "No Data";
+    return Math.round((sum / count) * 100) / 100;
+  };
+
   return (
     <>
       <div className="mx-auto my-4 text-4xl ld:text-6xl font-extrabold">
-      <Link href="/teams" className="mx-4 inline-block"><ArrowLeftCircleIcon className="w-8 h-8"/></Link>
+        <Link href="/teams" className="mx-4 inline-block">
+          <ArrowLeftCircleIcon className="w-8 h-8" />
+        </Link>
         {name}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-8">
-
         <div className="inline-block md:row-span-2">
-        <img src={teamImg[name]} alt={name} className="max-h-full mx-auto"/>
+          <img src={teamImg[name]} alt={name} className="max-h-full mx-auto" />
         </div>
         <div className="inline-block md:col-span-2">
           <Card className="p-4">
-          <table className="table-auto w-full text-2xl">
-            <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
-              <td className="font-semibold">{"Year Participating: " + Object.keys(teams[name]).length} </td>
-                
-              </tr>
-              <tr className="m-4">
-                  {Object.keys(teams[name]).join(", ")}
-                  </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
-                <td className="font-semibold">Average Ranking</td>
-                
-              </tr>
-              <tr className="m-4">
-                  {averageRanking()}
-                  </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
-              <td className="font-semibold">Average Point</td>
-
-              </tr>
-              <tr className="m-4">
-                  {averagePoint()}
-                  </tr>
-            </tbody>
-          </table>
+            <table className="table-auto w-full text-2xl">
+              <tbody>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
+                  <td className="font-semibold">
+                    {"Year Participating: " + Object.keys(teams[name]).length}{" "}
+                  </td>
+                </tr>
+                <tr className="m-4">
+                  <td>{Object.keys(teams[name]).join(", ")}</td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
+                  <td className="font-semibold">Average Ranking</td>
+                </tr>
+                <tr className="m-4">
+                  <td>{averageRanking()}</td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 m-4">
+                  <td className="font-semibold">Average Point</td>
+                </tr>
+                <tr className="m-4">
+                  <td>{averagePoint()}</td>
+                </tr>
+              </tbody>
+            </table>
           </Card>
-          </div>
-          <div className="inline-block md:col-span-2">
-          <Line options={options} data={data} />;
+        </div>
+        <div className="inline-block md:col-span-2 overflow-auto">
+          <LineChart mode="team" name={name}/>
         </div>
       </div>
     </>
